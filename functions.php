@@ -265,4 +265,11 @@ function find_user_by_id($id){
     ");
     return $result;
 }
+function see_all_categories(){
+    global$db;
+    $result=$db->query("
+    SELECT * FROM `category `
+    ");
+    return $result;
+}
 ?>
