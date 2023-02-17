@@ -78,4 +78,16 @@ function is_user_uniqe($username,$email){
     }return true;
 }
 
+function is_admin_uniqe($username,$email){
+    global$db;
+    $result=$db->query("
+    SELECT * FROM `admin`
+    WHERE username='$username' OR 
+    email='$email'
+    ");
+    $row=$result->fetch_assoc();
+    if(empty($row)){
+        return false;
+    }return true;
+}
 ?>
