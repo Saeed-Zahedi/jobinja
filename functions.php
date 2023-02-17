@@ -257,4 +257,12 @@ function see_sent_resume($id){
     ");
     return $result;
 }
+function find_user_by_id($id){
+    global$db;
+    $result=$db->query("
+    SELECT * FROM `user`
+    WHERE id=$id 
+    ");
+    return $result;
+}
 ?>

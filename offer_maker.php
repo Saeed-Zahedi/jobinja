@@ -19,8 +19,10 @@ $category=$offer['category'];
 ?>
     <tr>
 <?php 
-echo $category.":".$id;
+echo $category.":";echo $id;
 ?>
+</br>
+<a href="<?php echo 'http://localhost/projects/see_resume.php?offer_id=$id' ?>">see sent resume</a>
 </br>
 </br>
 </tr>
