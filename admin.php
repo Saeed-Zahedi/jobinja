@@ -119,5 +119,16 @@ function does_company_exist($name){
         return false;
     }return true;
 }
-
+function does_city_exist($name){
+        $name=strtolower($name);
+    global$db;
+    $result=$db->query("
+    SELECT * FROM `city`
+    WHERE name='$name'
+    ");
+    $row=$result->fetch_assoc();
+    if(empty($row)){
+        return false;
+    }return true;
+}
 ?>
