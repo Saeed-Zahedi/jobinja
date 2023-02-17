@@ -28,11 +28,19 @@ function add_city($name){
     ('$name')
     ");
 }
-function add_companyname($name){
+function add_company($name,$email){
     global$db;
+    $result=$db->query("
+    SELECT * FROM `offer`
+    ORDER BY id DESC
+    LIMIT 1
+    ");
+    $row=$result->fetch_assoc();
+    $id=$row['id'];
+    $id++;
     $db->query("
-    INSERT INTO `company_name` (name) VALUES
-    ('$name')
+    INSERT INTO `company` (id,name,email) VALUES
+    ('$id','$name','$email')
     ");
 }
 
@@ -90,4 +98,5 @@ function is_admin_uniqe($username,$email){
         return false;
     }return true;
 }
+add_company('mahsan','mahsanemail.com');
 ?>
