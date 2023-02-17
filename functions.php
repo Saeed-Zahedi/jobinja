@@ -154,9 +154,14 @@ function user_singup($username,$password,$email,$phonenumber,$skills=null){
     ('$id','$username','$password','$email','$phonenumber','$skills')
     ");
 }
-function see_offers($category,$city,$company_name=null,$time=null){
+function see_offers($category=null,$city=null,$company_name=null,$time=null){
     global$db;
-    if(is_null($company_name)&&is_null($time)){
+    if(is_null($company_name)||is_null($time)){
+        $result=$db->query("
+        SELECT * FROM `offer` 
+        ");
+        return $result;
+    }elseif(is_null($company_name)&&is_null($time)){
         $result=$db->query("
         SELECT * FROM `offer`
         WHERE category='$category' AND
