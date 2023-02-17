@@ -65,5 +65,17 @@ function add_user($username,$password,$email,$phonenumber,$skills){
     ('$username','$password','$email','$phonenumber','$skills')
     ");
 }
-add_category('php');
+function is_user_uniqe($username,$email){
+    global$db;
+    $result=$db->query("
+    SELECT * FROM `user`
+    WHERE username='$username' OR 
+    email='$email'
+    ");
+    $row=$result->fetch_assoc();
+    if(empty($row)){
+        return false;
+    }return true;
+}
+
 ?>
