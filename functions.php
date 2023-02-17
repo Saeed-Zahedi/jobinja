@@ -219,4 +219,16 @@ function find_user_id($username){
     $row=$result->fetch_assoc();
     return $row['id'];
 }
+function is_offermaker($username,$password){
+    global $db;
+    $result=$db->query("
+    SELECT * FROM `offer_maker`
+    WHERE username='$username'
+    AND password=$password
+    ");
+    $row=$result->fetch_assoc();
+    if(!empty($row)){
+        return true;
+    }return false;
+}
 ?>
