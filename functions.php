@@ -217,7 +217,7 @@ function find_user_id($username){
     WHERE username='$username'
     ");
     $row=$result->fetch_assoc();
-    return $row['id'];
+    return $row['id'];    
 }
 function is_offermaker($username,$password){
     global $db;
@@ -240,5 +240,21 @@ function find_company_of_offermaker($username,$password){
     ");
     $row=$result->fetch_assoc();
     return $row['company'];
+}
+function see_offers_of_company($company){
+    global $db;
+    $result=$db->query("
+    SELECT * FROM `offer` 
+    WHERE company_name='$company'
+    ");
+    return $result;
+}
+function see_sent_resume($id){
+    global $db;
+    $result=$db->query("
+    SELECT * FROM `sent_resume` 
+    WHERE offer_id=$id
+    ");
+    return $result;
 }
 ?>

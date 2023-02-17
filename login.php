@@ -1,12 +1,12 @@
 <?php 
+include_once('functions.php');
 function procces_input(){
     if(isset($_POST['login'])&&!empty($_POST['username'])&&!empty($_POST['password'])){
-    
         $username=$_POST['username'];
         $password=$_POST['password'];
         $user_id=find_user_id($username);
         if(is_offermaker($username,$password)){
-        header("location:http://localhost/projects/offermaker.php?user_id=$user_id");
+        header("location:http://localhost/projects/offer_maker.php?username=$username&password=$password");
         die();
         }else{
         header("location:http://localhost/projects/mainpage.php?user_id=$user_id");
