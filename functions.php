@@ -231,4 +231,14 @@ function is_offermaker($username,$password){
         return true;
     }return false;
 }
+function find_company_of_offermaker($username,$password){
+    global $db;
+    $result=$db->query("
+    SELECT * FROM `offer_maker`
+    WHERE username='$username'
+    AND password=$password
+    ");
+    $row=$result->fetch_assoc();
+    return $row['company'];
+}
 ?>
