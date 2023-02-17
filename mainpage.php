@@ -37,7 +37,7 @@ time:<?php echo $o_time ?>
 </br> 
 <a class="btn btn-primary" href="<?php 
 if(empty($user_id)){
-    echo 'hi';
+    echo "http://localhost/projects/login.php";
 }else{echo "http://localhost/projects/send_resume.php?user_id=$user_id&offer_id=$o_offer_id";}?>">
 send</a>
 </tr>
