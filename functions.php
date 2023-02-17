@@ -4,6 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 include_once('db.php');
+include_once('config.php');
 
 function add_category($name){
     global$db;
@@ -188,6 +189,7 @@ function see_offers($category=null,$city=null,$company_name=null,$time=null){
 }
 
 function send_resume($user_id=1,$offer_id){
+    echo 'hi';
     global$db;
     $db->query("
     INSERT INTO `sent_resume` (user_id,offer_id) VALUES
@@ -202,8 +204,10 @@ function add_offer_maker($username,$password,$company_name){
     ('$username','$password','$company_name')
     ");
 }
+
 function redirect($url){
-    header("Location:$url");
+    $des=SITE_URL.$url;
+    header("Location:$des");
     die();
 }
 ?>
