@@ -77,9 +77,17 @@ function add_admin($username,$password,$email){
 }
 function add_user($username,$password,$email,$phonenumber,$skills){
     global$db;
+    $result=$db->query("
+    SELECT * FROM `user`
+    ORDER BY id DESC
+    LIMIT 1
+    ");
+    $row=$result->fetch_assoc();
+    $id=$row['id'];
+    $id++;
     $db->query("
-    INSERT INTO `user` (username,password,email,phonenumber,skills) VALUES
-    ('$username','$password','$email','$phonenumber','$skills')
+    INSERT INTO `user` (id,username,password,email,phonenumber,skills) VALUES
+    ('$id','$username','$password','$email','$phonenumber','$skills')
     ");
 }
 function is_user_uniqe($username,$email){
@@ -120,7 +128,7 @@ function does_company_exist($name){
     }return true;
 }
 function does_city_exist($name){
-        $name=strtolower($name);
+    $name=strtolower($name);
     global$db;
     $result=$db->query("
     SELECT * FROM `city`
@@ -131,4 +139,22 @@ function does_city_exist($name){
         return false;
     }return true;
 }
+function user_singup($username,$password,$email,$phonenumber,$skills=null){
+    global$db;
+    $result=$db->query("
+    SELECT * FROM `user`
+    ORDER BY id DESC
+    LIMIT 1
+    ");
+    $row=$result->fetch_assoc();
+    $id=$row['id'];
+    $id++;
+    $db->query("
+    INSERT INTO `user`(id,username,password,email,phonenumber,skills)VALUES
+    ('$id','$username','$password','$email','$phonenumber','$skills')
+    ");
+}
+user_singup('s','p','e','1');
+user_singup('s','p','e','1','asd');
+
 ?>
