@@ -7,9 +7,17 @@ include_once('db.php');
 
 function add_category($name){
     global$db;
+    $result=$db->query("
+    SELECT * FROM `category`
+    ORDER BY id DESC
+    LIMIT 1
+    ");
+    $row=$result->fetch_assoc();
+    $id=$row['id'];
+    $id++;
     $db->query("
-    INSERT INTO `catagory` (name) VALUES
-    ('$name')
+    INSERT INTO `category` (id,name) VALUES
+    ('$id','$name')
     ");
 }
 
@@ -57,5 +65,5 @@ function add_user($username,$password,$email,$phonenumber,$skills){
     ('$username','$password','$email','$phonenumber','$skills')
     ");
 }
-
+add_category('php');
 ?>
