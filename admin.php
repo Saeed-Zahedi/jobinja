@@ -40,8 +40,15 @@ function add_offer($company_name,$level,$salary,$city,$time,$status,$category){
     $id++;
     $db->query("
     INSERT INTO `offer` (id, company_name, level, salary, city, time, status, category) VALUES 
-    ('$id   ','$company_name','$level','$salary','$city','$time','$status','$category')
+    ('$id','$company_name','$level','$salary','$city','$time','$status','$category')
     ");
 }
-add_offer("mahsan",1,"not set","tehran",2,3,"pentest");
+function add_admin($username,$password,$email){
+    global$db;
+    $db->query("
+    INSERT INTO `admin` (username,password,email) VALUES
+    ('$username','$password','$email')  
+    ");
+}
+
 ?>
