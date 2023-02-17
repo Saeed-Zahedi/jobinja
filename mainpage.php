@@ -6,7 +6,9 @@ global$category;
 global$city;
 global$company_name;
 global$time;
-
+if(!empty($_GET['user_id'])){
+$user_id=$_GET['user_id'];
+}
 ?>
 
 <?php
