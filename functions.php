@@ -210,4 +210,13 @@ function redirect($url){
     header("Location:$des");
     die();
 }
+function find_user_id($username){
+    global $db;
+    $result=$db->query("
+    SELECT * FROM `user`
+    WHERE username='$username'
+    ");
+    $row=$result->fetch_assoc();
+    return $row['id'];
+}
 ?>
