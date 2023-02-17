@@ -202,5 +202,8 @@ function add_offer_maker($username,$password,$company_name){
     ('$username','$password','$company_name')
     ");
 }
-
+function redirect($url){
+    header("Location:$url");
+    die();
+}
 ?>
