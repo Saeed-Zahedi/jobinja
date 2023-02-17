@@ -29,6 +29,7 @@ function add_city($name){
     ");
 }
 function add_company($name,$email){
+    $name=strtolower($name);
     global$db;
     $result=$db->query("
     SELECT * FROM `offer`
@@ -98,5 +99,17 @@ function is_admin_uniqe($username,$email){
         return false;
     }return true;
 }
-add_company('mahsan','mahsanemail.com');
+function is_company_unique($name){
+    $name=strtolower($name);
+    global$db;
+    $result=$db->query("
+    SELECT * FROM `admin`
+    WHERE name='$name'
+    ");
+    $row=$result->fetch_assoc();
+    if(empty($row)){
+        return false;
+    }return true;
+}
+
 ?>
