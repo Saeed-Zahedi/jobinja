@@ -197,4 +197,5 @@ function add_offer_maker($username,$password,$company_name){
     ('$username','$password','$company_name')
     ");
 }
+
 ?>
