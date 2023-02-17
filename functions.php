@@ -187,7 +187,7 @@ function see_offers($category=null,$city=null,$company_name=null,$time=null){
     }
 }
 
-function send_resume($user_id,$offer_id){
+function send_resume($user_id=1,$offer_id){
     global$db;
     $db->query("
     INSERT INTO `sent_resume` (user_id,offer_id) VALUES

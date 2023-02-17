@@ -19,18 +19,21 @@ $offers=see_offers($category,$city,$company_name,$time);
 <table>
 <?php
 foreach($offers as $offer){
-$category=$offer['category'];
-$city=$offer['city'];
-$company=$offer['company'];
-$time=$offer['time'];
+$o_offer_id=$offer['id'];
+$o_category=$offer['category'];
+$o_city=$offer['city'];
+$o_company=$offer['company_name'];
+$o_time=$offer['time'];
 ?>
-<tr>category:<?php echo $category ?>
+<tr>category:<?php echo $o_category ?>
 </br>
-city:<?php echo $city ?>
+city:<?php echo $o_city ?>
 </br>
-company:<?php echo $company ?>
-</br>
-time:<?php echo $time ?>
+company:<?php echo $o_company ?>
+</br>   
+time:<?php echo $o_time ?>
+</br> 
+<a href= ""></a>
 </tr>
 </br>
 </br>
