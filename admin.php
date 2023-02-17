@@ -23,9 +23,17 @@ function add_category($name){
 
 function add_city($name){
     global$db;
+    $result=$db->query("
+    SELECT * FROM `category`
+    ORDER BY id DESC
+    LIMIT 1
+    ");
+    $row=$result->fetch_assoc();
+    $id=$row['id'];
+    $id++;
     $db->query("
-    INSERT INTO `city` (name) VALUES
-    ('$name')
+    INSERT INTO `city` (id,name) VALUES
+    ('$id','$name')
     ");
 }
 function add_company($name,$email){
