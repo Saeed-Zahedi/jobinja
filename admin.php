@@ -99,11 +99,11 @@ function is_admin_uniqe($username,$email){
         return false;
     }return true;
 }
-function is_company_unique($name){
+function does_company_exist($name){
     $name=strtolower($name);
     global$db;
     $result=$db->query("
-    SELECT * FROM `admin`
+    SELECT * FROM `company`
     WHERE name='$name'
     ");
     $row=$result->fetch_assoc();
