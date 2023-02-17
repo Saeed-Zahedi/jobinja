@@ -3,9 +3,15 @@ function procces_input(){
     if(isset($_POST['login'])&&!empty($_POST['username'])&&!empty($_POST['password'])){
     
         $username=$_POST['username'];
+        $password=$_POST['password'];
         $user_id=find_user_id($username);
+        if(is_offermaker($username,$password)){
+        header("location:http://localhost/projects/offermaker.php?user_id=$user_id");
+        die();
+        }else{
         header("location:http://localhost/projects/mainpage.php?user_id=$user_id");
         die();
+        }
     }
 }
 ?>
