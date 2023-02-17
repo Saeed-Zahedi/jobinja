@@ -50,5 +50,12 @@ function add_admin($username,$password,$email){
     ('$username','$password','$email')  
     ");
 }
+function add_user($username,$password,$email,$phonenumber,$skills){
+    global$db;
+    $db->query("
+    INSERT INTO `user` (username,password,email,phonenumber,skills) VALUES
+    ('$username','$password','$email','$phonenumber','$skills')
+    ");
+}
 
 ?>
