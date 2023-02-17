@@ -154,7 +154,38 @@ function user_singup($username,$password,$email,$phonenumber,$skills=null){
     ('$id','$username','$password','$email','$phonenumber','$skills')
     ");
 }
-user_singup('s','p','e','1');
-user_singup('s','p','e','1','asd');
-
+function see_offers($category,$city,$company_name=null,$time=null){
+    global$db;
+    if(is_null($company_name)&&is_null($time)){
+        $result=$db->query("
+        SELECT * FROM `offer`
+        WHERE category='$category' AND
+        city='$city' 
+        ");
+        return $result;
+    }elseif(is_null($company_name)){
+        $result=$db->query("
+        SELECT * FROM `offer`
+        WHERE category='$category' AND
+        city='$city' AND 
+        time='$time' 
+        ");
+        return $result;        
+    }elseif(is_null($time)){
+        $result=$db->query("
+        SELECT * FROM `offer`
+        WHERE category='$category' AND
+        city='$city' AND 
+        company_name='$company_name' 
+        ");
+        return $result;        
+    }
+}
+function send_resume($user_id,$offer_id){
+    global$db;
+    $db->query("
+    INSERT INTO `sent_resume` (user_id,offer_id) VALUES
+    ('$user_id','$offer_id')
+    ");
+}
 ?>
