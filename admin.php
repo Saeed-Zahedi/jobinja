@@ -181,11 +181,20 @@ function see_offers($category,$city,$company_name=null,$time=null){
         return $result;        
     }
 }
+
 function send_resume($user_id,$offer_id){
     global$db;
     $db->query("
     INSERT INTO `sent_resume` (user_id,offer_id) VALUES
     ('$user_id','$offer_id')
+    ");
+}
+
+function add_offer_maker($username,$password,$company_name){
+    global$db;
+    $db->query("
+    INSERT INTO `offer_maker` (username,password,company_name) VALUES
+    ('$username','$password','$company_name')
     ");
 }
 ?>
