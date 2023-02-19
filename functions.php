@@ -1,4 +1,7 @@
 <?php
+
+use LDAP\Result;
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -294,5 +297,16 @@ function see_user_skills($user_id){
     WHERE user_id=$user_id
     ");
     return $result;
+}
+function see_skill_by_id($category_id){
+    global$db;
+    $result=$db->query("
+    SELECT * FROM `category`
+    WHERE id=$category_id
+    ");     
+    return $result->fetch_assoc();
+}
+function goto_profile_page($user_id){
+    return "http://localhost/projects/profile.php?user_id=".(int)$user_id;
 }
 ?>  

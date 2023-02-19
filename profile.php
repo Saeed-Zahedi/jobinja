@@ -1,5 +1,6 @@
     <?php 
     include_once('functions.php');
+    include_once('db.php');      
     $user_id;
     $user_id=$_GET['user_id'];
     $user=find_user_by_id($user_id);
@@ -12,12 +13,19 @@
     phone_number:<?php echo $user['phonenumber'];?>
     </br>
     <?php
-    $skills=see_user_skills($user_id);
+    $skills=see_user_skills($user_id);  
+    echo 'your skills:';
     ?>
-    <table>
-    <?php foreach($skills as $skill){   
+    <br/>
+    <?php
+    foreach($skills as $skill){
+        $category=$skill['category_id'];
+        $name=see_skill_by_id($category)['name'];
+        echo $name;
         ?>
-    <tr>
-    <?php echo $skill;?>    
-    </tr>
-    <?php } ?>
+        <br>
+        <?php
+    }
+    ?>
+    
+    

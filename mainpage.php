@@ -20,6 +20,11 @@ $offers=see_offers($category,$city,$company_name,$time);
 ?>
 <a href="http://localhost/projects/login.php">sing in/up</a>
 </br>
+<?php 
+if(!empty($user_id)){?>
+<a href="<?php echo goto_profile_page((int)$user_id); ?>">see profile</a>
+<?php }?>
+</br>
 </br>
 <table>
 <?php
