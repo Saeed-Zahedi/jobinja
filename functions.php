@@ -245,7 +245,7 @@ function see_offers_of_company($company){
     global $db;
     $result=$db->query("
     SELECT * FROM `offer` 
-    WHERE company_name='$company'
+    WHERE company_name=$company
     ");
     return $result;
 }
@@ -290,8 +290,8 @@ function goto_main_page($user_id){
 function see_user_skills($user_id){
     global$db;
     $result=$db->query("
-    INSERT * FROM `user_category`
-    WHERE user_i$user_id
+    SELECT * FROM `user_category`
+    WHERE user_id=$user_id
     ");
     return $result;
 }

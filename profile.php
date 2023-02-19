@@ -1,13 +1,23 @@
     <?php 
+    include_once('functions.php');
     $user_id;
     $user_id=$_GET['user_id'];
     $user=find_user_by_id($user_id);
+    $user=$user->fetch_assoc(); 
     ?>
-    username:<?php echo $user_id['username'];?>
+    username:<?php echo $user['username'];?>
     </br>
-    emil:<?php echo $user_id['email'];?>
+    emil:<?php echo $user['email'];?>
     </br>
-    phone_number:<?php echo $user_id['phonenumber'];?>
+    phone_number:<?php echo $user['phonenumber'];?>
     </br>
-    
+    <?php
+    $skills=see_user_skills($user_id);
     ?>
+    <table>
+    <?php foreach($skills as $skill){   
+        ?>
+    <tr>
+    <?php echo $skill;?>    
+    </tr>
+    <?php } ?>
