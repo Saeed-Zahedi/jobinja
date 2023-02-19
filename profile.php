@@ -12,10 +12,13 @@
     </br>
     phone_number:<?php echo $user['phonenumber'];?>
     </br>
+    <a href="<?php echo goto_edit_profile($user_id); ?>">edit</a>
+</br>
     <?php
     $skills=see_user_skills($user_id);  
     echo 'your skills:';
     ?>
+    </br>
     <br/>
     <?php
     foreach($skills as $skill){

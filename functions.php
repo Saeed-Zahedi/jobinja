@@ -323,4 +323,20 @@ function goto_delete_skill_for_user($category_id,$user_id){
 function goto_user_category_from_profile($user_id){
     return "http://localhost/projects/user_category_from_profile.php?user_id=".(int)$user_id;
 }
+function goto_edit_profile($user_id){
+    return "http://localhost/projects/edit_profile.php?user_id=".(int)$user_id;
+}
+function update_user($user_id,$username,$password,$email,$phonenumber){
+    global$db;
+    $db->query("
+    UPDATE `user` SET 
+    id=$user_id
+    username=$username, 
+    password=$password,
+    email=$email,
+    phonenumber=$phonenumber,
+    skills='aaa'   
+    WHERE id=$user_id
+    ");
+}
 ?>  

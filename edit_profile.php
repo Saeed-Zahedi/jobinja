@@ -1,14 +1,16 @@
 <?php 
 include_once('functions.php');
+global$user_id;
+$user_id=$_GET['user_id'];
 function procces_input(){
-    if(isset($_POST['signup'])&&!empty($_POST['username'])&&!empty($_POST['password'])&&!empty($_POST['email'])&&!empty($_POST['phonenumber'])){
+    if(isset($_POST['edit'])&&!empty($_POST['username'])&&!empty($_POST['password'])&&!empty($_POST['email'])&&!empty($_POST['phonenumber'])){
         $username=$_POST['username'];
         $password=$_POST['password'];
         $email=$_POST['email'];
         $phonenumber=$_POST['phonenumber'];
-        user_singup($username,$password,$email,$phonenumber);
-        $user_id=find_user_id($username);
-        header("location:http://localhost/projects/user_category.php?user_id=$user_id");
+        global$user_id;
+        update_user($user_id,$username,$password,$email,$phonenumber);
+        header("location:http://localhost/projects/profile.php?user_id=$user_id");
         die();
     }
 }
@@ -20,7 +22,7 @@ function procces_input(){
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">singup</h3>
+                <h3 class="panel-title">Enter new values</h3>
             </div>
             <div class="panel-body">
                 <form class="form-horizontal" method="post">
@@ -55,7 +57,7 @@ function procces_input(){
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" name="signup" class="btn btn-primary">sign up</button>
+                            <button type="submit" name="edit" class="btn btn-primary">save</button>
                         </div>
                     </div>
                     <?php procces_input() ?>
@@ -66,4 +68,4 @@ function procces_input(){
     </div>
     <div class="col-md-2"></div>
 </div>
-<a href="http://localhost/projects/mainpage.php">exit</a>
+<a href="<?php echo goto_profile_page($user_id); ?>">exit</a>
