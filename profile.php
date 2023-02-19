@@ -23,6 +23,7 @@
         $name=see_skill_by_id($category)['name'];
         echo $name;
         ?>
+        <a href="<?php echo goto_delete_skill_for_user($category,$user_id); ?>">delete</a>
         <br>
         <?php
     }

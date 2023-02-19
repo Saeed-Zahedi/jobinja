@@ -309,4 +309,16 @@ function see_skill_by_id($category_id){
 function goto_profile_page($user_id){
     return "http://localhost/projects/profile.php?user_id=".(int)$user_id;
 }
+function delete_skill_for_user($category_id,$user_id){
+    global$db;
+    $db->query("
+    DELETE FROM `user_category`
+    WHERE user_id=$user_id 
+    AND category_id=$category_id 
+    ");
+}
+function goto_delete_skill_for_user($category_id,$user_id){
+    return "http://localhost/projects/delete_skill_for_user.php?user_id=".(int)$user_id."&category_id=".(int)$category_id;
+}
+
 ?>  
