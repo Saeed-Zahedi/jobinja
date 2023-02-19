@@ -268,8 +268,20 @@ function find_user_by_id($id){
 function see_all_categories(){
     global$db;
     $result=$db->query("
-    SELECT * FROM `category `
+    SELECT * FROM `category`
     ");
     return $result;
 }
-?>
+function add_skill($user_id,$category_id){
+    global$db;
+    $result=$db->query("
+    INSERT INTO `user_category`
+    (user_id,category_id)
+    VALUES
+    ('$user_id','$category_id')
+    ");
+}
+function goto_add_skill($user_id,$category_id){
+    return "http://localhost/projects/add_skill.php?user_id=".$user_id."&category_id=".$category_id;
+}
+?>  

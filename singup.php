@@ -9,7 +9,7 @@ function procces_input(){
         $phonenumber=$_POST['phonenumber'];
         user_singup($username,$password,$email,$phonenumber);
         $user_id=find_user_id($username);
-        header("location:http://localhost/projects/mainpage.php?user_id=$user_id");
+        header("location:http://localhost/projects/user_category.php?user_id=$user_id");
         die();
     }
 }
