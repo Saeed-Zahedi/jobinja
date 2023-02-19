@@ -287,4 +287,12 @@ function goto_add_skill($user_id,$category_id){
 function goto_main_page($user_id){
     return "http://localhost/projects/mainpage.php?user_id=".$user_id;
 }
+function see_user_skills($user_id){
+    global$db;
+    $result=$db->query("
+    INSERT * FROM `user_category`
+    WHERE user_i$user_id
+    ");
+    return $result;
+}
 ?>  
