@@ -320,5 +320,7 @@ function delete_skill_for_user($category_id,$user_id){
 function goto_delete_skill_for_user($category_id,$user_id){
     return "http://localhost/projects/delete_skill_for_user.php?user_id=".(int)$user_id."&category_id=".(int)$category_id;
 }
-
+function goto_user_category_from_profile($user_id){
+    return "http://localhost/projects/user_category_from_profile.php?user_id=".(int)$user_id;
+}
 ?>  

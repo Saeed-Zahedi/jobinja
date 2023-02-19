@@ -28,5 +28,9 @@
         <?php
     }
     ?>
+ <a href="<?php echo goto_user_category_from_profile($user_id);?>">add skill</a>
+</br>
+</br>
+    <a href="<?php echo goto_main_page($user_id);?>">exit</a>
     
     
