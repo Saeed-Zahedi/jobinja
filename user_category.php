@@ -16,3 +16,5 @@ $category_id=$category['id']
 </br>
 </br>
 <?php }?>
+</table>
+<a href="<?php echo goto_main_page($user_id);?>">done</a>
