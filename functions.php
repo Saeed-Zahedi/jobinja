@@ -248,7 +248,7 @@ function see_offers_of_company($company){
     global $db;
     $result=$db->query("
     SELECT * FROM `offer` 
-    WHERE company_name=$company
+    WHERE company_name='$company'
     ");
     return $result;
 }
@@ -256,7 +256,7 @@ function see_sent_resume($id){
     global $db;
     $result=$db->query("
     SELECT * FROM `sent_resume` 
-    WHERE offer_id=$id
+    WHERE offer_id='$id'
     ");
     return $result;
 }
@@ -294,7 +294,7 @@ function see_user_skills($user_id){
     global$db;
     $result=$db->query("
     SELECT * FROM `user_category`
-    WHERE user_id=$user_id
+       WHERE user_id='$user_id'
     ");
     return $result;
 }
@@ -330,13 +330,19 @@ function update_user($user_id,$username,$password,$email,$phonenumber){
     global$db;
     $db->query("
     UPDATE `user` SET 
-    id=$user_id
-    username=$username, 
-    password=$password,
-    email=$email,
-    phonenumber=$phonenumber,
-    skills='aaa'   
+    username='$username', 
+    password='$password',
+    email='$email',
+    phonenumber='$phonenumber'
     WHERE id=$user_id
     ");
+}
+function find_user_by_username($username){
+    global$db;
+    $result=$db->query("
+    SELECT * FROM `user`
+    WHERE username='$username'
+    ");
+    return $result;
 }
 ?>  
