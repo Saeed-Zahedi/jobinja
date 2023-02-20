@@ -1,5 +1,7 @@
 <?php 
 include_once('functions.php');
+$username_o=$_GET['username'];
+$password=$_GET['password'];
 $offer_id=$_GET['offer_id'];
 $resumes=see_sent_resume($offer_id);
 ?>
@@ -17,7 +19,7 @@ foreach($resumes as $resume){
     ?>
 <tr>   
 </t>
-    <?php echo "user$sum:"."username:$username     email:$email     phonenumber:$phonenumber" ; 
+    <?php echo "$sum:"."username:$username     email:$email     phonenumber:$phonenumber" ; 
     $sum++;
 ?>
 </br>
@@ -31,10 +33,14 @@ foreach($resumes as $resume){
             <?php
         }
         ?>
-    
+        <br>
+<a href="<?php echo goto_accept_reject($offer_id,$resume['user_id'],1,$password);?>">accept</a>
+    </br>
+<a href="<?php echo goto_accept_reject($offer_id,$resume['user_id'],2,$password);?>">rejected</a>
 </br>
 </br>
 </tr>
 
 <?php }?>
+<a href="<?php echo goto_offer_maker($username_o,$password);?>">exit</a>
 </table>        

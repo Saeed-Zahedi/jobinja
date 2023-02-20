@@ -198,6 +198,10 @@ function send_resume($user_id=1,$offer_id){
     INSERT INTO `sent_resume` (user_id,offer_id) VALUES
     ('$user_id','$offer_id')
     ");
+    $db->query("
+    INSERT INTO `resume_result`(offer_id,user_id,result)VALUES
+    ('$offer_id','$user_id','0');
+    ");
 }
 
 function add_offer_maker($username,$password,$company_name){
@@ -344,5 +348,21 @@ function find_user_by_username($username){
     WHERE username='$username'
     ");
     return $result;
+}
+function accept_and_reject_resume($offer_id,$user_id,$result){
+    global$db;
+        $db->query("
+        UPDATE `resume_result` SET
+        result=$result
+        WHERE 
+        user_id=$user_id AND
+        offer_id=$offer_id
+        ");
+}
+function goto_accept_reject($offer_id,$user_id,$result,$password){
+    return "http://localhost/projects/accept_reject.php?offer_id=".$offer_id."&user_id=".$user_id."&result=".$result."&password=".$password;
+}
+function goto_offer_maker($username,$password){
+    return "http://localhost/projects/offer_maker.php?username=".$username."&password=".$password;
 }
 ?>  

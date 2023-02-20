@@ -22,7 +22,7 @@ $category=$offer['category'];
 echo $category.":";echo $id;
 ?>
 </br>
-<a href="<?php echo "http://localhost/projects/see_resume.php?offer_id=$id" ?>">see sent resume</a>
+<a href="<?php echo "http://localhost/projects/see_resume.php?offer_id=$id&username=$username&password=$password" ?>">see sent resume</a>
 </br>
 </br>
 </tr>
