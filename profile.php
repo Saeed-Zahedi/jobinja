@@ -34,6 +34,8 @@
  <a href="<?php echo goto_user_category_from_profile($user_id);?>">add skill</a>
 </br>
 </br>
-    <a href="<?php echo goto_main_page($user_id);?>">exit</a>
+<a href="<?php echo goto_see_result_resume($user_id);?>">see sent resume</a>
+</br>
+ <a href="<?php echo goto_main_page($user_id);?>">exit</a>
     
     

@@ -365,4 +365,23 @@ function goto_accept_reject($offer_id,$user_id,$result,$password){
 function goto_offer_maker($username,$password){
     return "http://localhost/projects/offer_maker.php?username=".$username."&password=".$password;
 }
+function see_result_of_sent_resume($user_id){
+    global$db;
+    $result=$db->query("
+        SELECT * FROM `resume_result`
+        WHERE user_id='$user_id'
+    ");
+    return $result;
+}
+function get_offer_by_id($offer_id){
+    global$db;
+    $result=$db->query("
+    SELECT * FROM `offer`
+    WHERE id=$offer_id
+    ");
+    return $result;
+}
+function goto_see_result_resume($user_id){
+    return "http://localhost/projects/see_result_resume.php?user_id=$user_id";
+}
 ?>  
