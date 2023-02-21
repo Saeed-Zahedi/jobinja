@@ -28,3 +28,4 @@ echo $category.":";echo $id;
 </tr>
 <?php }?>
 </table>
+<a href="<?php echo goto_make_new_offer($username,$company,$password);?>">make new offer</a>

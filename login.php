@@ -7,7 +7,7 @@ function procces_input(){
         $user_id=find_user_id($username);
         if(is_offermaker($username,$password)){
         header("location:http://localhost/projects/offer_maker.php?username=$username&password=$password");
-        die();
+        die();  
         }else{
         header("location:http://localhost/projects/mainpage.php?user_id=$user_id");
         die();

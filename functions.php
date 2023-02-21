@@ -384,4 +384,28 @@ function get_offer_by_id($offer_id){
 function goto_see_result_resume($user_id){
     return "http://localhost/projects/see_result_resume.php?user_id=$user_id";
 }
+function goto_make_new_offer($username,$company,$password){
+    return "http://localhost/projects/make_offer.php?username=".$username."&company=".$company."&password=".$password;
+}function get_all_cities(){
+    global$db;
+    $result=$db->query("
+    SELECT * FROM `city`
+    ");
+    return $result;
+}
+function make_new_offer($company_name,$level,$salary,$city,$time,$status,$category){
+    global$db;
+    $result=$db->query("
+    SELECT * FROM `offer`
+    ORDER BY id DESC
+    LIMIT 1
+    ");
+    $row=$result->fetch_assoc();
+    $id=$row['id'];
+    $id++;
+    $db->query("
+    INSERT INTO `offer`(id,company_name,level,salary,city,time,status,category)VALUES
+    ('$id','$company_name','$level','$salary','$city','$time','$status','$category')
+    ");
+}
 ?>  
