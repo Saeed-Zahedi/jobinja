@@ -1,22 +1,15 @@
 <?php 
 include_once('functions.php');
 function procces_input(){
-    if(isset($_POST['login'])&&!empty($_POST['username'])&&!empty($_POST['password'])){
+    if(isset($_POST['signup'])&&!empty($_POST['username'])&&!empty($_POST['password'])&&!empty($_POST['email'])&&!empty($_POST['phonenumber'])){
         $username=$_POST['username'];
         $password=$_POST['password'];
-        if(is_offermaker($username,$password)){
-        header("location:http://localhost/projects/offer_maker.php?username=$username&password=$password");
-        die();  
-        }
-        elseif(is_admin($username,$password)){
-        header("location:http://localhost/projects/admin_page.php?username=$username&password=$password");
-        die();  
-        }
-        else{
+        $email=$_POST['email'];
+        $phonenumber=$_POST['phonenumber'];
+        user_singup($username,$password,$email,$phonenumber);
         $user_id=find_user_id($username);
-        header("location:http://localhost/projects/mainpage.php?user_id=$user_id");
+        header("location:http://localhost/projects/user_category_from_admin.php?user_id=$user_id");
         die();
-        }
     }
 }
 ?>
@@ -27,7 +20,7 @@ function procces_input(){
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">login </h3>
+                <h3 class="panel-title">singup</h3>
             </div>
             <div class="panel-body">
                 <form class="form-horizontal" method="post">
@@ -47,8 +40,22 @@ function procces_input(){
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">email</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">phonenumber</label>
+                        <div class="col-sm-10">
+                            <input type="phonenumber" class="form-control" id="phonenumber" name="phonenumber"
+                                placeholder="phonenumber">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" name="login" class="btn btn-primary">login</button>
+                            <button type="submit" name="signup" class="btn btn-primary">add</button>
                         </div>
                     </div>
                     <?php procces_input() ?>
@@ -59,4 +66,4 @@ function procces_input(){
     </div>
     <div class="col-md-2"></div>
 </div>
-<a href="http://localhost/projects/singup.php">sing up</a>
+<a href="http://localhost/projects/admin_page.php">exit</a>

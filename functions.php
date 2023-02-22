@@ -207,7 +207,7 @@ function send_resume($user_id=1,$offer_id){
 function add_offer_maker($username,$password,$company_name){
     global$db;
     $db->query("
-    INSERT INTO `offer_maker` (username,password,company_name) VALUES
+    INSERT INTO `offer_maker` (username,password,company) VALUES
     ('$username','$password','$company_name')
     ");
 }
@@ -407,5 +407,31 @@ function make_new_offer($company_name,$level,$salary,$city,$time,$status,$catego
     INSERT INTO `offer`(id,company_name,level,salary,city,time,status,category)VALUES
     ('$id','$company_name','$level','$salary','$city','$time','$status','$category')
     ");
+}
+function is_admin($username,$password){
+    global$db;
+    $result=$db->query("
+    SELECT * FROM `admin`
+    WHERE username='$username'
+    AND password='$password'
+    ");
+    $result=$result->fetch_assoc();
+    if(!empty($result)){
+        return true;
+    }return false;
+}
+function delete_user($username){
+    global$db;
+    $db->query("
+    DELETE FROM `user`
+    WHERE  username ='$username'
+    ");
+}
+function get_all_users(){
+    global$db;
+    $result=$db->query("
+    SELECT * FROM `user`
+    ");
+    return $result;
 }
 ?>  
