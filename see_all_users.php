@@ -1,7 +1,17 @@
 <?php 
 include_once('functions.php');
 $all_users=get_all_users();
-foreach($all_users as $users){
-    echo 
-}
 ?>
+<table>
+<?php foreach($all_users as $users){
+    $username=$users['username'];
+    $user_id=$users['id'];
+    echo $username;
+    ?>
+    <br>
+    <a href="<?php echo goto_delete_user($username);?>">delete user</a>
+    <br>
+    <a href="<?php echo goto_edit_user_from_admin($user_id);?>">edit user</a>
+    <br>
+    <br>
+<?php } ?>

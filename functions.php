@@ -434,4 +434,11 @@ function get_all_users(){
     ");
     return $result;
 }
+function goto_delete_user($username){
+    return "http://localhost/projects/delete_user.php?username=".$username;
+}
+function goto_edit_user_from_admin($user_id){
+    return "http://localhost/projects/edit_profile_from_admin.php?user_id=".(int)$user_id;
+}
+
 ?>  
