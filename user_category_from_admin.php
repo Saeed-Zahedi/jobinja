@@ -11,7 +11,7 @@ $category_id=$category['id']
 ?>  
 <tr>
 <?php echo $category['name'];?></t>
-<a href="<?php echo goto_add_skill($user_id,$category_id);?>">add it</a>
+<a href="<?php echo goto_add_skill_from_admin($user_id,$category_id);?>">add it</a>
 </tr>
 </br>
 </br>

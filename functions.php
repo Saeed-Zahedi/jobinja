@@ -44,7 +44,7 @@ function add_company($name,$email){
     $name=strtolower($name);
     global$db;
     $result=$db->query("
-    SELECT * FROM `offer`
+    SELECT * FROM `company`
     ORDER BY id DESC
     LIMIT 1
     ");
@@ -291,6 +291,9 @@ function add_skill($user_id,$category_id){
 function goto_add_skill($user_id,$category_id){
     return "http://localhost/projects/add_skill.php?user_id=".$user_id."&category_id=".$category_id;
 }
+function goto_add_skill_from_admin($user_id,$category_id){
+    return "http://localhost/projects/add_skill_from_admin.php?user_id=".$user_id."&category_id=".$category_id;
+}
 function goto_main_page($user_id){
     return "http://localhost/projects/mainpage.php?user_id=".$user_id;
 }
@@ -440,5 +443,11 @@ function goto_delete_user($username){
 function goto_edit_user_from_admin($user_id){
     return "http://localhost/projects/edit_profile_from_admin.php?user_id=".(int)$user_id;
 }
-
+function get_all_companies(){
+    global$db;
+    $result=$db->query("
+    SELECT * FROM `company`
+    ");
+    return $result;
+}
 ?>  

@@ -66,4 +66,4 @@ function procces_input(){
     </div>
     <div class="col-md-2"></div>
 </div>
-<a href="http://localhost/projects/admin_page.php">exit</a>
+<a href="http://localhost/projects/see_all_users.php">exit</a>

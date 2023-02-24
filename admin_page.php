@@ -8,15 +8,13 @@ include_once('functions.php');
 </br>
 <a href="http://localhost/projects/add_city.php">add city</a>
 </br>
-<a href="http://localhost/projects/add_company.php">add company</a>
+<a href="http://localhost/projects/company.php">company</a>
 </br>
 <a href="http://localhost/projects/add_offer_maker.php">add offer maker</a>
 </br>
-<a href="http://localhost/projects/add_user.php">add user</a>
+<a href="http://localhost/projects/see_all_users.php">users</a>
 </br>
-<a href="http://localhost/projects/delete_user.php">delete user</a> 
-</br>
-<a href="http://localhost/projects/see_all_users.php"> see all users</a>
+<a href="http://localhost/projects/mainpage.php">exit</a>
 
 
 

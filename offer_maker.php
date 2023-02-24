@@ -29,3 +29,6 @@ echo $category.":";echo $id;
 <?php }?>
 </table>
 <a href="<?php echo goto_make_new_offer($username,$company,$password);?>">make new offer</a>
+</br>
+</br>
+<a href="http://localhost/projects/mainpage.php">exit</a>
