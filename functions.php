@@ -158,36 +158,37 @@ function user_singup($username,$password,$email,$phonenumber,$skills=null){
     ('$id','$username','$password','$email','$phonenumber','$skills')
     ");
 }
-function see_offers($category=null,$city=null,$company_name=null,$time=null){
+function see_offers($category_name=null,$city=null){
     global$db;
-    if(is_null($company_name)||is_null($time)){
-        $result=$db->query("
-        SELECT * FROM `offer` 
-        ");
-        return $result;
-    }elseif(is_null($company_name)&&is_null($time)){
-        $result=$db->query("
-        SELECT * FROM `offer`
-        WHERE category='$category' AND
-        city='$city' 
-        ");
-        return $result;
-    }elseif(is_null($company_name)){
-        $result=$db->query("
-        SELECT * FROM `offer`
-        WHERE category='$category' AND
-        city='$city' AND 
-        time='$time' 
-        ");
-        return $result;        
-    }elseif(is_null($time)){
-        $result=$db->query("
-        SELECT * FROM `offer`
-        WHERE category='$category' AND
-        city='$city' AND 
-        company_name='$company_name' 
-        ");
-        return $result;        
+    if(is_null($category_name)){
+        if(is_null($city)){
+            $result=$db->query("
+            SELECT * FROM `offer` 
+            ");
+            return $result;
+        }else{
+            $result=$db->query("
+            SELECT * FROM `offer`
+            WHERE city='$city' 
+            ");   
+            return $result;
+        }
+    }
+    else{
+        if(is_null($city)){
+            $result=$db->query("
+            SELECT * FROM `offer`
+            WHERE category='$category_name' 
+            ");
+            return $result;
+        }else{
+            $result=$db->query("
+            SELECT * FROM `offer`
+            WHERE city='$city' AND
+            category='$category_name'
+            ");   
+            return $result;
+        }
     }
 }
 
@@ -449,5 +450,19 @@ function get_all_companies(){
     SELECT * FROM `company`
     ");
     return $result;
+}
+function see_offers_by_category($category){
+    global$db;
+    $result=$db->query("
+    SELECT * FROM `offer`
+    WHERE category='$category'
+    ");
+    return$result;
+}
+function goto_main_page_by_category($category_name,$user_id){
+    if($user_id==NULL){
+        return "http://localhost/projects/mainpage.php?category=".$category_name;
+    }
+    return"http://localhost/projects/mainpage.php?category=".$category_name."&user_id=".$user_id;
 }
 ?>  

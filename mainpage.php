@@ -9,6 +9,14 @@ global$time;
 if(!empty($_GET['user_id'])){
 $user_id=$_GET['user_id'];
 }
+if(!empty($_POST['category'])){
+    $category=$_POST['category'];
+
+}
+if(!empty($_POST['city'])){
+    $city=$_POST['city'];
+
+}
 ?>
 
 <?php
@@ -24,6 +32,39 @@ $offers=see_offers($category,$city,$company_name,$time);
 if(!empty($user_id)){?>
 <a href="<?php echo goto_profile_page((int)$user_id); ?>">see profile</a>
 <?php }?>
+<form class="form-horizontal" method="post">
+                <div class="form-group">
+    <label for="category">category</label>
+    <select class="form-control" id="category" name="category">
+    <?php $all_category=see_all_categories();
+foreach($all_category as $categorys){
+    ?>
+    <option><?php echo $categorys['name']; ?></option>
+    <?php
+  }
+  ?>
+</select>
+</div>
+<form class="form-horizontal" method="post">
+                <div class="form-group">
+    <label for="city">city</label>
+    <select class="form-control" id="city" name="city">
+    <?php $all_cities=get_all_cities();
+foreach($all_cities as $cities){
+    ?>
+    <option><?php echo $cities['name']; ?></option>
+    <?php
+  }
+  ?>
+</select>
+</div>
+<div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" name="forcategory" class="btn btn-primary">search this!</button>
+                        </div>
+                    </div>
+                    
+                </form>
 </br>
 </br>
 <table>
