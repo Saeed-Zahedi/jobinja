@@ -102,3 +102,10 @@ send resume</a>
 </br>
 </br>
 <?php }?>
+<a href="<?php 
+if(!empty($user_id)){
+echo goto_send_message_user($user_id);
+}else{
+    echo "http://localhost/projects/login.php";
+}
+?>">messages</a>

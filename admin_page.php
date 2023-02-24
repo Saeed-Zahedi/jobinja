@@ -14,6 +14,8 @@ include_once('functions.php');
 </br>
 <a href="http://localhost/projects/see_all_users.php">users</a>
 </br>
+<a href="http://localhost/projects/send_message_admin.php">messages</a>
+</br>
 <a href="http://localhost/projects/mainpage.php">exit</a>
 
 

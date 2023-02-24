@@ -465,4 +465,67 @@ function goto_main_page_by_category($category_name,$user_id){
     }
     return"http://localhost/projects/mainpage.php?category=".$category_name."&user_id=".$user_id;
 }
+function goto_send_message_user($user_id){
+    return "http://localhost/projects/send_message_user.php?user_id=".$user_id;
+}
+function send_message($user_id,$text){
+    global$db;
+    $result=$db->query("
+    SELECT * FROM `message`
+    ORDER BY id DESC
+    LIMIT 1
+    ");
+    $row=$result->fetch_assoc();
+    $id=$row['id'];
+    $id++;
+    $db->query("
+    INSERT INTO `message`
+    (user_id,text,id,is_admin)VALUES
+    ('$user_id','$text','$id','0')
+    ");
+    header("location:/projects/mainpage.php?user_id=$user_id");
+    die();
+}
+function see_all_messages_user($user_id){
+    global$db;
+    $result=$db->query("
+    SELECT * FROM `message`
+    WHERE user_id=$user_id
+    AND is_admin='0'
+    ");
+    return $result;
+}
+function see_all_messages_admin(){
+    global$db;
+    $result=$db->query("
+    SELECT * FROM `message`
+    WHERE is_admin='0'
+    ");
+    return $result;
+}
+function send_message_admin($user_id,$id){
+    return("http://localhost/projects/write_message_admin.php?user_id=$user_id&id=$id");
+}
+function write_message_admin($user_id,$text,$id){
+    global$db;
+    $db->query("
+    INSERT INTO `message`
+    (user_id,text,id,is_admin)VALUES
+    ('$user_id','$text','$id','1')
+    ");
+    header("location:admin_page.php");
+    die();      
+}
+function see_admin_answer($user_id,$id){
+    global$db;
+    $result=$db->query("
+    SELECT * FROM `message`
+    WHERE user_id=$user_id AND 
+    id=$id AND is_admin='0'
+    ");
+    return $result;
+}
+function goto_see_admin_answer($user_id,$id){
+    return "http://localhost/projects/see_admin_answer.php?user_id=".$user_id."&id=".$id;
+}
 ?>  
