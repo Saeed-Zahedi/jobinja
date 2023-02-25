@@ -103,8 +103,16 @@ function is_user_uniqe($username,$email){
     ");
     $row=$result->fetch_assoc();
     if(empty($row)){
-        return false;
-    }return true;
+        $result=$db->query("
+        SELECT * FROM `admin`
+        WHERE username='$username' OR 
+        email='$email'
+        ");
+        $row=$result->fetch_assoc();
+        if(empty($row)){
+            return true;
+        }return false;
+    }return false;
 }
 
 function is_admin_uniqe($username,$email){

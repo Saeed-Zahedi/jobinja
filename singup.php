@@ -6,10 +6,16 @@ function procces_input(){
         $password=$_POST['password'];
         $email=$_POST['email'];
         $phonenumber=$_POST['phonenumber'];
+        if(is_user_uniqe($username,$email)){
         user_singup($username,$password,$email,$phonenumber);
         $user_id=find_user_id($username);
         header("location:http://localhost/projects/user_category.php?user_id=$user_id");
         die();
+        }else{
+            echo 'this username or eamil has been used!!!';
+            header("location:http://localhost/projects/singup.php?");
+            die();
+        }
     }
 }
 ?>
