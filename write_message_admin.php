@@ -25,3 +25,4 @@ global$id;
                     </div>
                     <?php procces_input();?>
                 </form>
+<a href="http://localhost/projects/send_message_admin.php">exit</a>

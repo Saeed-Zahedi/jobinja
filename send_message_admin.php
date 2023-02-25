@@ -12,3 +12,4 @@ foreach($messages as $message){
     <a href="<?php echo send_message_admin($user_id,$id);?>">answer</a>
 </br>
 <?php }?>
+<a href="http://localhost/projects/admin_page.php">exit</a>

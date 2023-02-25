@@ -521,7 +521,7 @@ function see_admin_answer($user_id,$id){
     $result=$db->query("
     SELECT * FROM `message`
     WHERE user_id=$user_id AND 
-    id=$id AND is_admin='0'
+    id=$id AND is_admin='1'
     ");
     return $result;
 }

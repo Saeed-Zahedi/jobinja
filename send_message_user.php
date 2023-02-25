@@ -34,7 +34,4 @@ foreach($messages as $message){
                     <?php procces_input();?>
                 </form>
 
-<a href="<?php 
-global$user_id;
-include_once('functions.php');
-goto_main_page($user_id);?>">exit</a>
+<a href="<?php echo goto_main_page($user_id);?>">exit</a>

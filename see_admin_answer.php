@@ -9,3 +9,4 @@ foreach($messages as $message){
     <?php
 }
 ?>
+<a href="<?php echo goto_send_message_user($user_id);?>">exit</a>
