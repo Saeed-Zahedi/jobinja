@@ -1,15 +1,16 @@
-<?php 
+<?php
 include_once('functions.php');
-global$user_id;
-$user_id=$_GET['user_id'];
-function procces_input(){
-    if(isset($_POST['edit'])&&!empty($_POST['username'])&&!empty($_POST['password'])&&!empty($_POST['email'])&&!empty($_POST['phonenumber'])){
-        $username=$_POST['username'];
-        $password=$_POST['password'];
-        $email=$_POST['email'];
-        $phonenumber=$_POST['phonenumber']; 
-        global$user_id;
-        update_user($user_id,$username,$password,$email,$phonenumber);
+global $user_id;
+$user_id = $_GET['user_id'];
+function procces_input()
+{
+    if (isset($_POST['edit']) && !empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['email']) && !empty($_POST['phonenumber'])) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $email = $_POST['email'];
+        $phonenumber = $_POST['phonenumber'];
+        global $user_id;
+        update_user($user_id, $username, $password, $email, $phonenumber);
         header("location:http://localhost/projects/see_all_users.php");
         die();
     }
@@ -28,30 +29,26 @@ function procces_input(){
                     <div class="form-group">
                         <label for="username" class="col-sm-2 control-label">username</label>
                         <div class="col-sm-10">
-                
-                            <input class="form-control" id="username" name="username" placeholder="username"
-                                value="">
+
+                            <input class="form-control" id="username" name="username" placeholder="username" value="">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 control-label">password</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="password" name="password"
-                                placeholder="password">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="password">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 control-label">email</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" id="email" name="email"
-                                placeholder="">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 control-label">phonenumber</label>
                         <div class="col-sm-10">
-                            <input type="phonenumber" class="form-control" id="phonenumber" name="phonenumber"
-                                placeholder="phonenumber">
+                            <input type="phonenumber" class="form-control" id="phonenumber" name="phonenumber" placeholder="phonenumber">
                         </div>
                     </div>
                     <div class="form-group">

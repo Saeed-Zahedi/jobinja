@@ -1,3 +1,2 @@
-<?php 
-define('SITE_URL','http://localhost/projects/');
-?>
+<?php
+define('SITE_URL', 'http://localhost/projects/');

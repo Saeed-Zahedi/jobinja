@@ -17,6 +17,3 @@ include_once('functions.php');
 <a href="http://localhost/projects/send_message_admin.php">messages</a>
 </br>
 <a href="http://localhost/projects/mainpage.php">exit</a>
-
-
-

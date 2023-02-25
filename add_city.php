@@ -1,7 +1,9 @@
-<?php 
+<?php
 include_once('functions.php');
-function procces_input(){
-    if(isset($_POST['category'])&&!empty($_POST['name'])){
+include_once('config.php');
+function procces_input()
+{
+    if (isset($_POST['category']) && !empty($_POST['name'])) {
         add_city($_POST['name']);
     }
 }
@@ -20,9 +22,8 @@ function procces_input(){
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">city</label>
                         <div class="col-sm-10">
-                
-                            <input class="form-control" id="name" name="name" placeholder="category name"
-                                value="">
+
+                            <input class="form-control" id="name" name="name" placeholder="category name" value="">
                         </div>
                     </div>
                     <div class="form-group">
@@ -38,4 +39,4 @@ function procces_input(){
     </div>
     <div class="col-md-2"></div>
 </div>
-<a href="http://localhost/projects/admin_page.php">exit</a>
+<a href="<?php echo SITE_URL; ?>/admin_page.php">exit</a>

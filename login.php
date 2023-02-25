@@ -1,21 +1,20 @@
-<?php 
+<?php
 include_once('functions.php');
-function procces_input(){
-    if(isset($_POST['login'])&&!empty($_POST['username'])&&!empty($_POST['password'])){
-        $username=$_POST['username'];
-        $password=$_POST['password'];
-        if(is_offermaker($username,$password)){
-        header("location:http://localhost/projects/offer_maker.php?username=$username&password=$password");
-        die();  
-        }
-        elseif(is_admin($username,$password)){
-        header("location:http://localhost/projects/admin_page.php?username=$username&password=$password");
-        die();  
-        }
-        else{
-        $user_id=find_user_id($username);
-        header("location:http://localhost/projects/mainpage.php?user_id=$user_id");
-        die();
+function procces_input()
+{
+    if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password'])) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        if (is_offermaker($username, $password)) {
+            header("location:http://localhost/projects/offer_maker.php?username=$username&password=$password");
+            die();
+        } elseif (is_admin($username, $password)) {
+            header("location:http://localhost/projects/admin_page.php?username=$username&password=$password");
+            die();
+        } else {
+            $user_id = find_user_id($username);
+            header("location:http://localhost/projects/mainpage.php?user_id=$user_id");
+            die();
         }
     }
 }
@@ -34,16 +33,14 @@ function procces_input(){
                     <div class="form-group">
                         <label for="username" class="col-sm-2 control-label">username</label>
                         <div class="col-sm-10">
-                
-                            <input class="form-control" id="username" name="username" placeholder="username"
-                                value="">
+
+                            <input class="form-control" id="username" name="username" placeholder="username" value="">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 control-label">password</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="password" name="password"
-                                placeholder="password">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="password">
                         </div>
                     </div>
                     <div class="form-group">
